@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "AWS TTS – Highlight & Speak",
+    "version": "1.0",
+    "description": "Configure TTS settings via the popup and then highlight text, right‑click, and have it read aloud via AWS Polly.",
+    "permissions": [
+      "contextMenus",
+      "storage",
+      "activeTab",
+      "identity"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": ["popup.html", "overlay.css"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "TTS Configuration"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"],
+        "run_at": "document_end"
+      }
+    ]
+  }
+  
